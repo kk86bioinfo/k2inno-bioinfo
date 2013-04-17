@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>EasyEntrez</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="javascript:void(0);" style="color: white;">
+						EasyEntrez
+                    </a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="javascript:void(0)">Home</a></li>
+                            <li><a href="#AboutUsModal" data-toggle="modal">About</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <!-- Main hero unit for a primary marketing message or call to action -->
+            <div class="hero-unit">
+                <img src="./applogo.png" alt="EasyEntrez" title="EasyEntrez" />
+                <p>This is a simple program to access <a href="javascript:void(0);" onClick="openUrl('http://www.ncbi.nlm.nih.gov/books/NBK25500');">NCBI E-utilities Web services</a></p>
+                
+                <p>
+                	Latest build (version: 1.0)<br />
+                	- Include <a href="javascript:void(0);" class="IsPopover" data-toggle="tooltip" data-title="Eutils::esearch" data-content="esearch.fcgi?db=<database>&term=<query>" data-trigger="hover">Basic Searching</a> <br />
+                	- Include <a href="javascript:void(0);" class="IsPopover" data-toggle="tooltip" data-title="Eutils::esummary" data-content="esummary.fcgi?db=<database>&id=<uid_list>" data-trigger="hover">Basic Downloading (Summary)</a> <br />
+                	- Include <a href="javascript:void(0);" class="IsPopover" data-toggle="tooltip" data-title="Eutils::efetch" data-content="efetch.fcgi?db=<database>&id=<uid_list>&rettype=<retrieval_type>&retmode=<retrieval_mode>" data-trigger="hover">Basic Downloading (Full Record)</a> <br />                	                	
+                </p>
+                
+                <p><a class="btn btn-primary btn-large" href="#StartEntrezModal" data-toggle="modal">Start &raquo;</a></p>
+            </div>
+            
+            <div class="row">
+	            <div id="tasklist" class="span12"></div>
+	        </div>
+
+            <hr>
+
+            <footer>
+                <p>&copy; Zetilab 2013</p>
+            </footer>
+
+        </div> <!-- /container -->
+        
+		<!-- Modal -->
+		<div id="AboutUsModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="AboutUsModalLabel" aria-hidden="true" data-backdrop="static">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="AboutUsModalLabel">About EasyEntrez</h3>
+		  </div>
+		  <div class="modal-body">
+			<p>
+				Developer: <br />
+				Kok-Keong Loke ( <a href="mailto:kkloke86@zetilab.org">kkloke86@zetilab.org</a> )
+			</p>
+		  </div>
+		  <div class="modal-footer">
+		  	<span style="float: left;">Version: 1.0</span>
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		  </div>
+		</div>      
+
+		<div id="StartEntrezModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="StartEntrezModalLabel" aria-hidden="true" data-backdrop="static">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="StartEntrezModalLabel">EasyEntrez Entry</h3>
+		  </div>
+		  <div class="modal-body">
+		  
+		  	<div id="entrez-form">
+				<input type="text" class="input-xlarge" id="entrez-query" placeholder="Query keyword" /><br />
+		  
+				<select id="entrez-type" onchange="showEntrezParams();">
+					<option value="">Choose data type</option>
+					<!--<option value="esearch">esearch</option>-->
+					<option value="esummary">Summary Record</option>
+					<option value="efetch">Full Record</option>
+				</select><br />
+			
+ 
+				<select id="entrez-db" class="sec-entry" style="display: none;" onchange="updateEntrezDb();">
+					<option value="">NCBI Entrez Database</option>
+					<option value='bioproject'>BioProject</option>
+					<option value='biosample'>BioSample</option>
+					<option value='biosystems'>Biosystems</option>
+					<option value='books'>Books</option>
+					<option value='cdd'>Conserved Domains</option>
+					<option value='gap'>dbGaP</option>
+					<option value='dbvar'>dbVar</option>
+					<option value='epigenomics'>Epigenomics</option>
+					<option value='nucest'>EST</option>
+					<option value='gene'>Gene</option>
+					<option value='genome'>Genome</option>
+					<option value='gds'>GEO Datasets</option>
+					<option value='geoprofiles'>GEO Profiles</option>
+					<option value='nucgss'>GSS</option>
+					<option value='homologene'>HomoloGene</option>
+					<option value='mesh'>MeSH</option>
+					<option value='toolkit'>NCBI C++ Toolkit</option>
+					<option value='ncbisearch'>NCBI Web Site</option>
+					<option value='nlmcatalog'>NLM Catalog</option>
+					<option value='nuccore'>Nucleotide</option>
+					<option value='omia'>OMIA</option>
+					<option value='popset'>PopSet</option>
+					<option value='probe'>Probe</option>
+					<option value='protein'>Protein</option>
+					<option value='proteinclusters'>Protein Clusters</option>
+					<option value='pcassay'>PubChem BioAssay</option>
+					<option value='pccompound'>PubChem Compound</option>
+					<option value='pcsubstance'>PubChem Substance</option>
+					<option value='pubmed'>PubMed</option>
+					<option value='pmc'>PubMed Central</option>
+					<option value='snp'>SNP</option>
+					<option value='sra'>SRA</option>
+					<option value='structure'>Structure</option>
+					<option value='taxonomy'>Taxonomy</option>
+					<option value='unigene'>UniGene</option>
+					<option value='unists'>UniSTS</option>			 	
+				</select><br />
+			
+				<div id="extra_params" style="display: none;">
+					<select id="entrez-rettype"></select>
+					<!--<select id="entrez-retmode"></select>-->
+				</div><br />
+			</div>			
+			
+			<div id="ExtractConfirm"></div>
+			<input type="hidden" id="ExtractTotal" value="" />
+			<input type="file" id="ExtractDir" style="display: none;" nwdirectory />
+			<input type="hidden" id="ExtractParams" value="" />
+			
+		  </div>
+		  <div class="modal-footer">
+		  	<div id="entrez-form-buttons">
+				<button class="btn btn-primary" onClick="submitRequest();">Submit</button>		  
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			</div>
+			
+			<div id="extract-confirm-buttons">
+				<button class="btn btn-info" onClick="previewRequest();">Preview</button>
+				<button class="btn btn-primary" onClick="downloadRequest();">Download</button>
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+			</div>
+
+		  </div>
+		</div>      
+		
+		<script src="js/vendor/jquery-1.9.1.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script>
+        
+			// Load NodeJS library
+			var fs = require('fs'),
+				http = require('http'),
+				querystring = require('querystring');
+				
+			// Load native UI library.
+			var gui = require('nw.gui');
+				
+            var json_efetchdata, 
+            	taskinterval = [];
+			var efetch_data = fs.readFileSync("./data/efetch_params.json", "utf8");
+			json_efetchdata = $.parseJSON(efetch_data);
+                    
+			$(function(){    
+				window.console.log("Started...");
+										
+				// Logical jquery			    
+		        $(".IsPopover").popover();
+		        
+		        $("#StartEntrezModal").on('show', function(){
+					//Initialize....
+					$("#ExtractConfirm").empty();
+					$("#extra_params").css('display', 'none');					
+					$("#entrez-form").css("display", "");
+					$("#entrez-type").val('');
+					$("#entrez-query").val('');
+
+					$("#extract-confirm-buttons").css("display", "none");					
+					$("#entrez-form-buttons").css("display", "");
+					
+		        });
+		        
+		    });
+        </script>
+        
+        <script src="js/main.js"></script>        
+    </body>
+</html>

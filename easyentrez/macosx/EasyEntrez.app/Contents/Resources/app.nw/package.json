@@ -1,0 +1,17 @@
+{
+  "main": "index.html",
+  "name": "EasyEntrez",
+  "description": "A simple program to access NCBI Entrez E-Utilities Web Services",
+  "version": "1.0",
+  "keywords": [ "NCBI", "entrez", "e-utilities" ],
+  "window": {
+    "icon": "apple-touch-icon.png",
+    "toolbar": true,
+    "width": 1024,
+    "height": 768,
+    "min_width": 400,
+    "min_height": 200,
+    "max_width": 1024,
+    "max_height": 768
+  }
+}
