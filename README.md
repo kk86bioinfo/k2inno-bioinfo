@@ -9,8 +9,8 @@ EasyEntrez (v1.0) [Updated at 17-Apr-2013]
 - Version 1.0 (Updated at 18-Apr-2013)<br />
 <a href="http://www.zetilab.org/tools/easyentrez/build/EasyEntrez-v1-win.zip" target="_BLANK">v1.0 (Windows executable build)</a><br />
 <a href="http://www.zetilab.org/tools/easyentrez/build/EasyEntrez-v1-linux-ia32.zip" target="_BLANK">v1.0 (Linux executable build for 32bit OS)</a><br />
-<a href="http://www.zetilab.org/tools/easyentrez/build/EasyEntrez-v1-linux-x64.zip" target="_BLANK">v1.0 (Linux executable build for 64bit OS)</a><br />	
-<a href="http://www.zetilab.org/tools/easyentrez/build/EasyEntrez-v1-macosx.zip" target="_BLANK">v1.0 (MacOSX executable build)</a>
+<a href="http://www.zetilab.org/tools/easyentrez/build/EasyEntrez-v1-linux-x64.zip" target="_BLANK">v1.0 (Linux executable build for 64bit OS)</a><br />
+<a href="http://www.zetilab.org/tools/easyentrez/build/EasyEntrez-v1-macosx.zip" target="_BLANK">v1.0 (MacOSX executable build)</a> 
 
 <hr />
 	
