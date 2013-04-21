@@ -7,7 +7,7 @@ EasyEntrez (v1.0)
 - Cross platform binary to support Windows, Linux and MacOSX.
 <br />
 
-- Bugfix #1<br />
+Bugfix #1
 - Fixed duplicated task progress bar.
 - Fixed retrieval failure due to expired WebEnv in NCBI server.
 - Performance touch-up.
